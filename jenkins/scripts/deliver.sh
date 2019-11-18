@@ -6,12 +6,12 @@ echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
 echo 'volume).'
 set -x
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
-sudo set +x
+set +x
 
 echo 'The following complex command extracts the value of the <name/> element'
 echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'
 set -x
-NAME=`sudo mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
+NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
 set +x
 
 echo 'The following complex command behaves similarly to the previous one but'
